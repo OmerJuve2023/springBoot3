@@ -1,0 +1,46 @@
+server:
+  port: 3000
+
+spring:
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/SpringBoot3
+    username: postgres
+    password: peru2020
+    name: SpringBoot3
+    generate-unique-name: false
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+  main:
+    web-application-type: servlet
+  mvc:
+    problemdetails:
+      enabled: true
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        exclude: "*"
+  tracing:
+    sampling:
+      probability: 1.0
+jdbc:
+  datasource-proxy:
+    query:
+      enable-logging: true
+    logging: slf4j
+    multiline: false
+    include-parameter-values: false
+    json-format: false
+  includes: connection,fetch,query
+
+logging:
+  level:
+    datasource-query-logger: info
+    org.springframework.data: debug
